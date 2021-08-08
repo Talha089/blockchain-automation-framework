@@ -1,0 +1,28 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: partner-dtg
+  annotations:
+    fluxcd.io/automated: "false"
+  namespace: partner-ns
+spec:
+  releaseName: partner-dtg
+  chart:
+    path: platforms/hyperledger-indy/charts/indy-domain-genesis
+    git: https://github.com/Talha089/blockchain-automation-framework.git
+    ref: master
+  values:
+    metadata:
+      name: partner-dtg
+      namespace: partner-ns
+    organization:
+      name: partner
+    configmap:
+      domainGenesis: |-
+        {"reqSignature":{},"txn":{"data":{"alias":"softtik-trustee","dest":"ViVSzs48fiB8pk9X8GmffZ","role":"0","verkey":"GekSP8hG8zgEHNZqLabhYB4rLJW2NuAFhHRUzxGqNPaf"},"metadata":{},"type":"1"},"txnMetadata":{"seqNo":1},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"crowdkeep-trustee","dest":"JNh3ryVkz9svh5fqhjKu9j","role":"0","verkey":"AUE5qgYb6gdwBBybtwvRdnPnD5DY6ERK4R8VN8jqULzE"},"metadata":{"from":"ViVSzs48fiB8pk9X8GmffZ"},"type":"1"},"txnMetadata":{"seqNo":2},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"crowdkeep-steward-1","dest":"2zBd1MKymNGdfwvC5SLADS","role":"2","verkey":"25nAbR8ShPYePsVLAPMYuqwT3XQJyvzqU5CvX15o87xz"},"metadata":{"from":"JNh3ryVkz9svh5fqhjKu9j"},"type":"1"},"txnMetadata":{"seqNo":3},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"crowdkeep-steward-2","dest":"JBGRxh1sLQQUt92XhYBpyW","role":"2","verkey":"AMzw9Wk5WQJy2NZbhvHYDnbtUjHNscUihjunc5t681Ku"},"metadata":{"from":"JNh3ryVkz9svh5fqhjKu9j"},"type":"1"},"txnMetadata":{"seqNo":4},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"partner-trustee","dest":"6Dv4443RvtV1gRHJhbRa4n","role":"0","verkey":"3r6jPZrcgFoZEFeq2ZcHguX1mvZ1X2PeFjSxsY3KDjJ5"},"metadata":{"from":"ViVSzs48fiB8pk9X8GmffZ"},"type":"1"},"txnMetadata":{"seqNo":5},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"partner-steward-1","dest":"KN39gmy4Yx5GnVydg8xn6m","role":"2","verkey":"B1UvRyL6TmKu1UqadvuJTUL5jY7bfHZBfREsfqz9eNhb"},"metadata":{"from":"6Dv4443RvtV1gRHJhbRa4n"},"type":"1"},"txnMetadata":{"seqNo":6},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"alias":"partner-steward-2","dest":"KXUb2c4imNMZetmUvtB1TE","role":"2","verkey":"B6dHzUyWEw64YzKkaTRi1LTipJ5mrMTtqgtZYSx5LxNe"},"metadata":{"from":"6Dv4443RvtV1gRHJhbRa4n"},"type":"1"},"txnMetadata":{"seqNo":7},"ver":"1"}
