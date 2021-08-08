@@ -40,4 +40,4 @@ spec:
       
       provider: "ambassador"
       external_url: softtik-webserver.indy.crowdpoint.tech
-      port: 15010
+      port: 15024
