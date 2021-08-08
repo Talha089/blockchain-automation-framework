@@ -94,8 +94,8 @@ spec:
       role: ro
     storage:
       data:
-        storagesize: 3Gi
+        storagesize: 1Gi
         storageClassName: crowdkeep-aws-storageclass
       keys:
-        storagesize: 3Gi
+        storagesize: 1Gi
         storageClassName: crowdkeep-aws-storageclass
