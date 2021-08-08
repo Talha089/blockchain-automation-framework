@@ -1,0 +1,43 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: crowdkeep-crowdkeep-endorser-transaction
+  annotations:
+    fluxcd.io/automated: "false"
+  namespace: crowdkeep-ns
+spec:
+  releaseName: crowdkeep-crowdkeep-endorser-transaction
+  chart:
+    path: platforms/hyperledger-indy/charts/indy-ledger-txn
+    git: https://github.com/Talha089/blockchain-automation-framework.git
+    ref: master
+  values:
+    metadata:
+      name: crowdkeep-crowdkeep-endorser-transaction
+      namespace: crowdkeep-ns
+    network:
+      name: softtik
+    image:
+      cli:
+        name: crowdkeep
+        repository: index.docker.io/hyperledgerlabs/indy-ledger-txn:latest
+        pullSecret: regcred
+    vault:
+      address: http://a8f18618947b649ec88a29aaf08fa3d2-695861177.us-west-1.elb.amazonaws.com:8200
+      role: rw
+      serviceAccountName: crowdkeep-admin-vault-auth
+      auth_path: kubernetes-crowdkeep-admin-auth
+    organization:
+      name: crowdkeep
+      adminIdentity:
+        name: softtik-trustee
+        did: ViVSzs48fiB8pk9X8GmffZ
+        path: softtik/trustees
+      newIdentity:
+        name: crowdkeep-endorser
+        role: ENDORSER
+        did: BCwunMqED746KtKLbG3s1T
+        verkey: 6ZdbyEvuSE7YTo1NpN9BDzv63yTPgU9rJuE4x1t2wfte
+        path: crowdkeep/endorsers
+    node:
+      name: crowdkeep
