@@ -1,0 +1,25 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: crowdkeep-ptg
+  annotations:
+    fluxcd.io/automated: "false"
+  namespace: crowdkeep-ns
+spec:
+  releaseName: crowdkeep-ptg
+  chart:
+    path: platforms/hyperledger-indy/charts/indy-pool-genesis
+    git: https://github.com/Talha089/blockchain-automation-framework.git
+    ref: master
+  values:
+    metadata:
+      name: crowdkeep-ptg
+      namespace: crowdkeep-ns
+    organization:
+      name: crowdkeep
+    configmap:
+      poolGenesis: |-
+        {"reqSignature":{},"txn":{"data":{"data":{"alias":"crowdkeep-steward-1","blskey":"Bqht9cii9S5LmHcJRtVhdqxVmcg5yW2XUyGLhTrqyvtoeK1ELczarYWfVikb2sdE6YTHSm4Sn9tuwQHXN4mFjHPHjsyRGkSwL7HUF9qQLc5ph6BskMtHQQVQpSrJGitMZfWiXjzMdck78u1Jx8mxRkmSY4H1wqnzqY3LbNPKPqvbSh","blskey_pop":"QsYTQJLVXFYKw4Spx8FxWEe9Sq4vKLSjVWNfqzDQzCJLH19UMrDVxUFiuABgJ1bwrDnM4WkiBzgFUFMgVPpEhw9zWPLc9ZkHbq69M3mppn2i8GbeazACVacWSjYYkPL2jBPMg1hQSzqMa3FeyH9xsDsTBmABx43ufm8SEjbzxBbNis","client_ip":"54.67.25.150","client_port":9712,"node_ip":"54.67.25.150","node_port":9711,"services":["VALIDATOR"]},"dest":"FETufgoXD8ZBncDkcDkGCDm2kmdMyrEYDkVU8U1b4UJX"},"metadata":{"from":"T7X4Sgi4eXEHuzNLQP4ZWv"},"type":"0"},"txnMetadata":{"seqNo":1,"txnId":"3037193917b70195b6df7e45e42a0c25e4a2e5bfd34901ee96b39ed45088d3da"},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"data":{"alias":"crowdkeep-steward-2","blskey":"3CrvxwN9DpKRwZyfqntkTdgPKLbXDQY41ARCN1Ta9yh1vaRJmYrn8KFSuHBtvUDW2yFFED4u4Cz349ybnkWBFjfPUqJZd7gSNNouv91mbvh1MtNtRPsaopg7eDq8w8s2aCnFZRq8zFDT4EURpi5rY9X4CevswBGvsgjefHuDa8HxV6D","blskey_pop":"RNc73d4TbC9axELkAoDXVL13FtMrfNPfNWX9YfVVhFeX5K2VWwYaTkB43JgYmsFT1GgBUT9tdaBi3C1ecL9yWwLuvA1PNE4n6dYKMM1KjU7S1VHWnHjcaJj9Jo4sTQ4c2aqi7DPY5Ah4rBxV33oy8z3RptQRePpPAaLp1SiNZRHWKR","client_ip":"54.67.25.150","client_port":9722,"node_ip":"54.67.25.150","node_port":9721,"services":["VALIDATOR"]},"dest":"AfdNNksTipVSo9DVwe5Ba2jSXHSkqCp156nBBiT8EgQs"},"metadata":{"from":"JjcLmY6UyuNFx2Bkn6gXb8"},"type":"0"},"txnMetadata":{"seqNo":2,"txnId":"062faabf7660947a6be1c76450bd238066c1e8f779cdb8990ee1f1a5f9d34589"},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"data":{"alias":"partner-steward-1","blskey":"2Yby5RZM5iWpC9wH5u2EeRgC9avaiLXx2ZhaUs3x7y7VhVyEdNjjNvQxgZi2M6Jj5H4SCACh6Sr7g2KW28T7DecB6iFN3zhJKgFTjQpWhcnHU3jzDNd3DxJfGWaBLBvpXSqaHAx8pmgCUYLZSWTBMhheUoAErGCTUKmVeTaB22nMZW8","blskey_pop":"RYZNNYZp2RvVwQE5CSYEFYTo1WrwY8QKZVVjD76KJgYefnaachKq1XGD2AK6pJHv3BuG3SLaMMA9Vpdt4sevhodEvCFMxkRXM71UVrRsuTL8cvTrEZ1hqWKdvGgsNWWWrgsKT3f2PYSoXiW85VDAT3AR6u93DYGBTww9hJC87wyQRu","client_ip":"54.67.25.150","client_port":9732,"node_ip":"54.67.25.150","node_port":9731,"services":["VALIDATOR"]},"dest":"3NRT3SPVpsS75GsdSaeVbeeFQVZFRcaU28Gk1r7LtsGD"},"metadata":{"from":"5M8mNbcea2qYt2EnifBNHC"},"type":"0"},"txnMetadata":{"seqNo":3,"txnId":"62a426a55142745dcd68456212d322c8b63682274fcdffd10c3d274e0f87469b"},"ver":"1"}
+        {"reqSignature":{},"txn":{"data":{"data":{"alias":"partner-steward-2","blskey":"Z7ykoxktxHgfQXjBfHUKgNwxMakntPVdf1vfCDW897Azavz6k5D9g5UyigVRR4a6nK9FcibLNtwWHPVUEfrJHnxZyX8145r9xsCJCcyf45N8D792kgWWijkM856CE1E89gXh8h6p668YArCmqhGBdjg6rUJAi4jUdDChvfVdo4wmkr","blskey_pop":"REUfmwDA3X2qEsvkfpG1YU9ecL6JXiyMVPUZG5gtxMK1vGRQtsB1LcKJz4mBnB1BrZXAudtnRksAVe7itmMp9YC8cZVPobs4pZLRukeLq2Asvjm7Xy3GMrjZ7Sk72fHqXEd6C8sGAjbMEzH54xsArHE47Z1Yu4vfpub2vhBZXum3bd","client_ip":"54.67.25.150","client_port":9742,"node_ip":"54.67.25.150","node_port":9741,"services":["VALIDATOR"]},"dest":"69FCZKS1Xn15A5FWnYBRPdsgAYno4GPwcHAKRMHo3gTg"},"metadata":{"from":"ASCqUdk1qZwrNzE8fb2yFM"},"type":"0"},"txnMetadata":{"seqNo":4,"txnId":"bf525e539b7e0d3e0eeeb2a075198dde681f56ce7d724aca0ebf6d606289a523"},"ver":"1"}
