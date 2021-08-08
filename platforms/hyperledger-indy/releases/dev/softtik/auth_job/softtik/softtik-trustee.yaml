@@ -1,0 +1,36 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: softtik-softtik-trustee-auth-job
+  annotations:
+    fluxcd.io/automated: "false"
+  namespace: softtik-ns
+spec:
+  releaseName: softtik-softtik-trustee-auth-job
+  chart:
+    path: platforms/hyperledger-indy/charts/indy-auth-job
+    git: https://github.com/Talha089/blockchain-automation-framework.git
+    ref: master
+  values:
+    metadata:
+      name: softtik-softtik-trustee-auth-job
+      namespace: softtik-ns
+    network:
+      name: softtik
+      kubernetes_url: https://F065DC49FBCA1562BB27118F62851D87.gr7.us-west-1.eks.amazonaws.com
+    image:
+      name: softtik
+      repository: alpine:3.9.4
+    vault:
+      address: http://a8f18618947b649ec88a29aaf08fa3d2-695861177.us-west-1.elb.amazonaws.com:8200
+      keyPath: softtik.trustees
+      identity: softtik-trustee
+      admin_auth_path: kubernetes-softtik-admin-auth
+      policy: softtik-softtik-trustee-ro
+      policy_content: path \"/softtik/trustees/softtik-trustee/*\" { capabilities = [ \"read\", \"list\" ] }
+      auth_path: kubernetes-softtik-softtik-trustee-auth
+    account:
+      admin_service: softtik-admin-vault-auth
+      admin_role: rw
+      service: softtik-softtik-trustee-vault-auth
+      role: ro
